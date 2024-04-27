@@ -9,5 +9,23 @@
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+        <script src="https://d2ufkyqkozd7qy.cloudfront.net/lex-web-ui-loader.min.js"></script>
+        <script>
+          var loaderOpts = {
+            baseUrl: 'https://d2ufkyqkozd7qy.cloudfront.net/',
+            shouldLoadMinDeps: true
+          };
+          var loader = new ChatBotUiLoader.IframeLoader(loaderOpts);
+          var chatbotUiConfig = {
+                  lex: {
+                    sessionAttributes: {
+                      userAgent: navigator.userAgent,
+                      QNAClientFilter: ''
+                    }
+                  }
+                };
+          loader.load(chatbotUiConfig)
+            .catch(function (error) { console.error(error); });
+        </script>
     </body>
 </html>
